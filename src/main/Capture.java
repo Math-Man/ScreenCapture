@@ -46,20 +46,25 @@ public class Capture{
 		
 	}
 	
-	public void capture(int tickRate, int times) throws InterruptedException, AWTException 
+	public void capture(int tickRate, int times , int imageDelay , boolean AutoDelete) throws InterruptedException, AWTException 
 	{
 		int indexer = 0;
 		AnimatedGifEncoder e = new AnimatedGifEncoder();
 		e.start("capture\\GIF.gif");
-		e.setDelay(1000);  
+		e.setDelay(imageDelay);  
 		
 		while(times > indexer) 
 		{
 			Thread.sleep(tickRate);
 			this.save(indexer + "");
-			System.out.println(indexer);
+			//System.out.println(indexer);
+			if(AutoDelete)
+			{
+				File file = new File("capture\\saved"+indexer+".png");
+				file.delete();
+			}
 			e.addFrame(this.capture());
-			System.out.println("AddingFrame");
+			//System.out.println("AddingFrame");
 			indexer++;
 		}
 		e.finish();

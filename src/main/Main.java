@@ -8,8 +8,9 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		Capture n = new Capture();
-		n.capture(3000, 8); //takes y pictures every x/1000 seconds
-		
+		n.capture(47, 40 , 47 ,true); //takes y pictures every x/1000 seconds
+								     //Tickrate < imagedelay fast gif
+									//Boolean denotes if the pngs should be removed
 	}
 
 }
