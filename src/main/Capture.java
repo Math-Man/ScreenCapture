@@ -16,6 +16,7 @@ import java.awt.Rectangle;
 public class Capture{
 	
 	
+	
 	private BufferedImage capture() throws AWTException 
 	{   
 		Robot r = new Robot();
@@ -38,7 +39,7 @@ public class Capture{
 	
 		try {
 			BufferedImage b = this.capture();
-		    File outputfile = new File("capture\\saved"+Addition+".png");
+		    File outputfile = new File("saved"+Addition+".png");
 		    ImageIO.write(b, "png", outputfile);
 		} catch (IOException e) {
 
@@ -47,10 +48,10 @@ public class Capture{
 	}
 	
 	public void capture(int tickRate, int times , int imageDelay , boolean AutoDelete) throws InterruptedException, AWTException 
-	{
+	{	
 		int indexer = 0;
 		AnimatedGifEncoder e = new AnimatedGifEncoder();
-		e.start("capture\\GIF.gif");
+		e.start("GIF.gif");
 		e.setDelay(imageDelay);  
 		
 		while(times > indexer) 
@@ -60,12 +61,13 @@ public class Capture{
 			//System.out.println(indexer);
 			if(AutoDelete)
 			{
-				File file = new File("capture\\saved"+indexer+".png");
+				File file = new File("saved"+indexer+".png");
 				file.delete();
 			}
 			e.addFrame(this.capture());
 			//System.out.println("AddingFrame");
 			indexer++;
+		
 		}
 		e.finish();
 	}
