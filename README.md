@@ -1,6 +1,6 @@
 # ScreenCapture
-Makes Gifs from your screen, useful for making timelapses
+Makes gifs from a region of your screen, useful for making timelapses.
 
-Uses this library: http://www.java2s.com/Code/Java/2D-Graphics-GUI/AnimatedGifEncoder.htm
+Uses this awsome library: http://www.java2s.com/Code/Java/2D-Graphics-GUI/AnimatedGifEncoder.htm
 
-Capture folder contains some example imaages along with the gif
+Capture folder contains some example images along with the end result gif.
