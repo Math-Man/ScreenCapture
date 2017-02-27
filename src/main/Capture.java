@@ -17,29 +17,40 @@ public class Capture{
 	
 	
 	
-	private BufferedImage capture() throws AWTException 
+	private BufferedImage capture() throws AWTException 	//Captures a single shot in a rectangle
 	{   
 		Robot r = new Robot();
 		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();	//get size of the screen
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
 		
-		Rectangle rec = new Rectangle();
+		Rectangle rec = new Rectangle();	//create a rectangle object with screen dimensions
 		rec.width = (int) width;
 		rec.height = (int) height;
 		
-		return r.createScreenCapture(rec);
+		File f = new File("capture");	//Creates a directory under root
+		try 
+		{
+			if(f.mkdir()) 
+			{
+				//Dir created
+			}
+			
+		}
+		catch(Exception e) {e.printStackTrace();}
+		
+		return r.createScreenCapture(rec);	//return the created image
 	}
 	
 	
 	
-	private void save(String Addition) throws AWTException 
+	private void save(String Addition) throws AWTException 	//Saves the image created from capture()  method
 	{
 	
 		try {
 			BufferedImage b = this.capture();
-		    File outputfile = new File("saved"+Addition+".png");
+		    File outputfile = new File("capture\\saved"+Addition+".png");
 		    ImageIO.write(b, "png", outputfile);
 		} catch (IOException e) {
 
@@ -48,7 +59,7 @@ public class Capture{
 	}
 	
 	public void capture(int tickRate, int times , int imageDelay , boolean AutoDelete) throws InterruptedException, AWTException 
-	{	
+	{
 		int indexer = 0;
 		AnimatedGifEncoder e = new AnimatedGifEncoder();
 		e.start("GIF.gif");
@@ -61,7 +72,7 @@ public class Capture{
 			//System.out.println(indexer);
 			if(AutoDelete)
 			{
-				File file = new File("saved"+indexer+".png");
+				File file = new File("capture\\saved"+indexer+".png");
 				file.delete();
 			}
 			e.addFrame(this.capture());

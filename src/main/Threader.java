@@ -8,7 +8,7 @@ public class Threader implements Runnable{
 	private int times;
 	private int imageDelay;
 	private boolean AutoDelete;
-	
+	public int progressCounter;
 
 	
 	public Threader(int tickRate , int times , int imageDelay , boolean AutoDelete) 
@@ -25,6 +25,7 @@ public class Threader implements Runnable{
 		Capture n = new Capture();
 		try {
 			n.capture(tickRate, times, imageDelay, AutoDelete);
+			progressCounter++;
 			
 		} catch (InterruptedException | AWTException e) {
 			// TODO Auto-generated catch block
